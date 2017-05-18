@@ -1,4 +1,3 @@
-# ad2ldap
 1) Go to install.conf file. Open it with your favorite editor. Please read carefuly comments for each directive, if something is not corresponding your structure, let me know. 
 2) If you got install.conf filled out, run install.sh . I propose to run in like following:
 	bash install.sh | tee install.log
