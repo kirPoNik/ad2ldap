@@ -40,12 +40,13 @@
 				</pivotAttributes>
 				<fetchedAttributes>
           				<string>cn</string>
+          				<string>sn</string>
           				<string>displayName</string>
 				        <string>givenName</string>
           				<string>sAMAccountName</string>
           				<string>userPrincipalName</string>
         			</fetchedAttributes>
-				<getAllFilter><![CDATA[(objectClass=person)]]></getAllFilter>
+				<getAllFilter><![CDATA[(&(objectClass=person)(sAMAccountName=*)(userPrincipalName=*))]]></getAllFilter>
         			<getOneFilter><![CDATA[(&(objectClass=person)(sAMAccountName={sAMAccountName}))]]></getOneFilter>
 				<cleanFilter><![CDATA[(&(objectClass=person)(uid={sAMAccountName}))]]></cleanFilter>
 			</ldapSourceService>
@@ -100,7 +101,7 @@
      					<name>uid</name>
      					<policy>KEEP</policy>
      					<createValues>
-      						<string>srcBean.getDatasetFirstValueById("sAMAccountName")</string>
+						<string>if ( srcBean.getDatasetFirstValueById("sn") ) { srcBean.getDatasetFirstValueById("sn")  } else { srcBean.getDatasetFirstValueById("userPrincipalName") } </string>
      					</createValues>
     				</dataset>
       			</propertiesBasedSyncOptions>
